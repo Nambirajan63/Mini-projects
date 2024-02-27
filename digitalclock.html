@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            width: 100vw;
+            height: 100vh;
+            background-color: antiquewhite;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            gap: 30px;
+        }
+        #clock {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        #clock div {
+            text-align: center;
+            letter-spacing: 1px;
+            font-size: 20px;
+            font-weight: 500;
+        }
+        #clock div p {
+            margin: 10px;
+        }
+    </style>
+</head>
+<body>
+    
+    <h1>Digital Clock</h1>
+    <div id="clock">
+        <div>
+            <p id="hours">00</p>
+            <p>Hours</p>
+        </div>
+        
+        <div>
+            <p id="minutes">00</p>
+            <p>Minutes</p>
+        </div>
+
+        <div>
+            <p id="seconds">00</p>
+            <p>Seconds</p>
+        </div>
+    </div>
+
+    <script>
+        
+
+        function updateTime() {
+
+            let hour = document.getElementById('hours');
+            let min = document.getElementById('minutes');
+            let sec = document.getElementById('seconds');
+
+            const date = new Date();
+            let hours = Math.floor(date.getHours())-12;
+            let minutes =Math.floor(date.getMinutes());
+            let seconds = Math.floor(date.getSeconds());
+
+            hour.textContent = hours.toString().padStart(2,'0');
+            min.textContent = minutes.toString().padStart(2,'0');
+            sec.textContent = seconds.toString().padStart(2,'0');
+        }
+        updateTime()
+        setInterval(updateTime,1000);
+    </script>
+</body>
+</html>
